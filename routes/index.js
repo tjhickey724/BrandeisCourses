@@ -4,6 +4,28 @@ const courses = require('../public/data/courses20-21.json');
 
 const app = express.Router();
 
+function digitsOf(s){
+  let i=0;
+  const ds="0123456789"
+  for (i=0; i<s.length; i++){
+    if (!ds.includes(s[i])) {
+      break;
+    } 
+  }
+  return s.slice(0,i);
+}
+function cleanCourses(){
+  for (c of courses){
+    let n = c.coursenum;
+    let m = digitsOf(c.coursenum);
+    let a = n.slice(m.length);
+    c.coursenum=m;
+    c.suffix=a;
+  }
+}
+
+cleanCourses();
+
 const coursesBySubject={};
 
 function initDictionaries() {
