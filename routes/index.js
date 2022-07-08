@@ -19,7 +19,7 @@ function cleanCourses(){
     let n = c.coursenum;
     let m = digitsOf(c.coursenum);
     let a = n.slice(m.length);
-    c.coursenum=m;
+    c.coursenum=parseInt(m);
     c.suffix=a;
   }
 }
